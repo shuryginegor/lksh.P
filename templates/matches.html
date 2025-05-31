@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Matches</title>
+</head>
+<body>
+<style>
+    td {
+        text-align: center;
+        vertical-align: middle;
+    }
+</style>
+<table border="1">
+    <thead>
+    <tr>
+        <td colspan="5">{{club}}</td>
+    </tr>
+    <tr>
+        <td rowspan="2">ID Матча</td>
+        <td rowspan="2">Соперник</td>
+        <td colspan="2">Счёт</td>
+        <td rowspan="2">Результат</td>
+    </tr>
+    <tr>
+        <td>{{club}}</td>
+        <td>Соперник</td>
+    </tr>
+    </thead>
+    <tbody>
+    {% for row in data %}
+    <tr>
+        {% for ceil in row %}
+        {% if ceil == "Win" %}
+        <td bgcolor="green"></td>
+        {% elif ceil == "Lose" %}
+        <td bgcolor="#b22222"></td>
+        {% elif ceil == "Draw" %}
+        <td bgcolor="yellow"></td>
+        {% else %}
+        <td>{{ceil}}</td>
+        {% endif %}
+        {% endfor %}
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+</body>
+</html>

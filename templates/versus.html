@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Versus</title>
+</head>
+<body>
+<style>
+    td {
+        text-align: center;
+        vertical-align: middle;
+    }
+</style>
+<table border="1">
+    <thead>
+    <tr>
+        <td></td>
+        <td>Игрок 1</td>
+        <td>Игрок 2</td>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>Противостояния</td>
+        <td colspan="2">{{versuses}}</td>
+    </tr>
+    {% for row in data %}
+    <tr>
+        <td>{{row.title}}</td>
+        {% for ceil in row.columns %}
+        {% if row.title == "Голы" or row.title == "Матчи Клуба" %}
+        <td><a href="{{ceil}}">Ссылка</a></td>
+        {% elif row.title == "Клуб" %}
+        <td><a href="{{ceil[0]}}">{{ceil[1]}}</a></td>
+        {% else %}
+        <td>{{ceil}}</td>
+        {% endif %}
+        {% endfor %}
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% if full != "true" %}
+<p>Вы также можете ввести доплнительный параметр full_information=true для получения большей информации. Это может
+    занять некоторое время</p>
+{% endif %}
+</body>
+</html>
